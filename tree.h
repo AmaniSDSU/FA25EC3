@@ -38,7 +38,10 @@ public:
     vector<Node<U>*> children;
 
     // TODO: Write constructor
-    // Node(const string &nodeID, const U &value);
+    Node(const string &nodeID, const U &value) {
+        id = nodeID;
+        data = value;
+    };
 };
 
 template <typename T>
@@ -47,7 +50,9 @@ private:
     Node<T>* root;
 
 public:
-    Tree();
+    Tree() {
+        root = nullptr;
+    };
     // TODO: Initialize root pointer to nullptr
 
     void createRoot(const string &id, const T &value);
