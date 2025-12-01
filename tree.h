@@ -62,7 +62,13 @@ public:
     // TODO: Allocate memory, assign id, assign data, set as root
 
     void addNode(const string &parentID, const string &childID, const T &value) {
-
+        Node<T> *parent = findNode(parentID);
+        if (findNode(childID)) {
+            parent->children.push_back(findNode(childID));
+            return;
+        }
+        Node<T> *child = new Node<T>(childID, value);
+        parent->children.push_back(child);
     }
     // TODO: Find parent, create child, link parent to child
     // TODO: Support repeated children under multiple parents
