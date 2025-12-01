@@ -67,10 +67,31 @@ public:
     // TODO: Find parent, create child, link parent to child
     // TODO: Support repeated children under multiple parents
 
-    Node<T>* findNode(const string &id);
+    Node<T>* findNode(const string &id) {
+        if (root == nullptr) {
+            return nullptr;
+        }
+        if (root->id == id) {
+            return root;
+        }
+
+        for (Node<T> *child : root->children) {
+            Node<T> *node = findNode(child->id);
+            if (node != nullptr) {
+                return node;
+            }
+        }
+        return nullptr;
+    };
     // TODO: Use DFS or BFS to search tree
 
-    void printAll();
+    void printAll() {
+        while (root != nullptr) {
+            cout << "Node " + root->id + ": " + root->data << "\n" << endl;
+            root = root->children[0];
+        }
+
+    };
     // TODO: Print entire structure in readable form
 
     ~Tree() {
