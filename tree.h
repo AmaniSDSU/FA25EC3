@@ -61,7 +61,9 @@ public:
     }
     // TODO: Allocate memory, assign id, assign data, set as root
 
-    void addNode(const string &parentID, const string &childID, const T &value);
+    void addNode(const string &parentID, const string &childID, const T &value) {
+
+    }
     // TODO: Find parent, create child, link parent to child
     // TODO: Support repeated children under multiple parents
 
@@ -71,7 +73,15 @@ public:
     void printAll();
     // TODO: Print entire structure in readable form
 
-    ~Tree();
+    ~Tree() {
+        if (root != nullptr) {
+            for (int i = 0; i < root->children.size(); i++) {
+                delete root->children[i];
+            }
+        }
+        delete root;
+        root = nullptr;
+    }
     // TODO: Free all allocated memory
 };
 
