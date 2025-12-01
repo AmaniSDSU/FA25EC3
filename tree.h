@@ -55,7 +55,10 @@ public:
     };
     // TODO: Initialize root pointer to nullptr
 
-    void createRoot(const string &id, const T &value);
+    void createRoot(const string &id, const T &value) {
+        Node<T> *node = new Node<T>(id, value);
+        root = node;
+    }
     // TODO: Allocate memory, assign id, assign data, set as root
 
     void addNode(const string &parentID, const string &childID, const T &value);
